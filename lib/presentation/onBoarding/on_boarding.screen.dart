@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:marvie/core/components/buttons/custom_button.widget.dart';
 import 'package:marvie/core/components/buttons/custom_icon_button.widget.dart';
 import 'package:marvie/core/theme/colors.dart';
+import 'package:marvie/presentation/login/login.screen.dart';
 import 'package:marvie/presentation/onBoarding/on_boarding.card.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -99,16 +101,21 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
                       width: 12,
                     ),
                     Expanded(
-                        child: CustomGradientButton(
-                      title: _currentPage < onBoardingList.length-1 ?  'Next' : 'Start',
+                        child: CustomButton(
+                      title: _currentPage < onBoardingList.length - 1
+                          ? 'Next'
+                          : 'Start',
+                      gradient: greenGradient,
                       onPressed: () {
-                        if (_currentPage < onBoardingList.length-1){
-                         setState(() {
-                           _currentPage +=1;
-                         });
+                        if (_currentPage < onBoardingList.length - 1) {
+                          setState(() {
+                            _currentPage += 1;
+                          });
                           _pageController.animateToPage(_currentPage,
                               curve: Curves.easeInOut,
                               duration: const Duration(milliseconds: 300));
+                        } else {
+                          Get.to(() => const LoginScreen());
                         }
                       },
                       icon:_currentPage < onBoardingList.length-1 ?  'asset/icons/next_icon.svg' : null,

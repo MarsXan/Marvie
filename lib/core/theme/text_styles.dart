@@ -94,7 +94,7 @@ const whiteBodyStyle =  TextStyle(
     fontFamily: primaryFontFamily,
     decoration: TextDecoration.none);
 
-const whiteLargeBodyStyle =  TextStyle(
+const whiteLargeBodyStyle = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.w600,
     fontStyle: FontStyle.normal,
@@ -102,8 +102,15 @@ const whiteLargeBodyStyle =  TextStyle(
     fontFamily: primaryFontFamily,
     decoration: TextDecoration.none);
 
+const darkGreenInputStyle = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+    fontStyle: FontStyle.normal,
+    color: darkGreen300d,
+    fontFamily: primaryFontFamily,
+    decoration: TextDecoration.none);
 
-const whiteLargeHeadingStyle =  TextStyle(
+const whiteLargeHeadingStyle = TextStyle(
     fontSize: 42,
     fontWeight: FontWeight.w900,
     fontStyle: FontStyle.normal,
@@ -111,15 +118,22 @@ const whiteLargeHeadingStyle =  TextStyle(
     fontFamily: primaryFontFamily,
     decoration: TextDecoration.none);
 
-const whiteMediumHeadingStyle =  TextStyle(
+const whiteMediumHeadingStyle = TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.w500,
     fontStyle: FontStyle.normal,
     color: Colors.white,
     fontFamily: primaryFontFamily,
     decoration: TextDecoration.none);
+const whiteNormalMediumHeadingStyle = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w400,
+    fontStyle: FontStyle.normal,
+    color: Colors.white,
+    fontFamily: primaryFontFamily,
+    decoration: TextDecoration.none);
 
-const whiteMediumBoldHeadingStyle =  TextStyle(
+const whiteMediumBoldHeadingStyle = TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.bold,
     fontStyle: FontStyle.normal,
@@ -127,8 +141,16 @@ const whiteMediumBoldHeadingStyle =  TextStyle(
     fontFamily: primaryFontFamily,
     decoration: TextDecoration.none);
 
-const onBoardingTitleStyle =  TextStyle(
+const largeTitleStyle = TextStyle(
     fontSize: 22,
+    fontWeight: FontWeight.w400,
+    fontStyle: FontStyle.normal,
+    color: Colors.white,
+    fontFamily: primaryFontFamily,
+    decoration: TextDecoration.none);
+
+const extraLargeTitleStyle = TextStyle(
+    fontSize: 42,
     fontWeight: FontWeight.w400,
     fontStyle: FontStyle.normal,
     color: Colors.white,

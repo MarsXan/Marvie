@@ -25,7 +25,7 @@ class OnBoardingCard extends StatelessWidget {
           const SizedBox(height: 38),
           Text(
             onBoardingModel.title,
-            style: onBoardingTitleStyle,
+            style: largeTitleStyle,
           ),
           const SizedBox(height: 8),
           SizedBox(
