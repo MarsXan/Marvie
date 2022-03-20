@@ -4,14 +4,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:marvie/core/theme/colors.dart';
 import 'package:marvie/core/theme/text_styles.dart';
 
-class LoginInput extends StatefulWidget {
-  const LoginInput(
+class AuthenticationInput extends StatefulWidget {
+  const AuthenticationInput(
       {Key? key,
       required this.icon,
       required this.iconColor,
       required this.iconBackgroundColor,
       required this.hint,
-      this.isSecureText = false})
+      this.isSecureText = false,
+      required this.controller})
       : super(key: key);
 
   final String icon;
@@ -19,12 +20,13 @@ class LoginInput extends StatefulWidget {
   final Color iconBackgroundColor;
   final String hint;
   final bool isSecureText;
+  final TextEditingController controller;
 
   @override
-  State<LoginInput> createState() => _LoginInputState();
+  State<AuthenticationInput> createState() => _AuthenticationInputState();
 }
 
-class _LoginInputState extends State<LoginInput> {
+class _AuthenticationInputState extends State<AuthenticationInput> {
   late bool _isObscureText = widget.isSecureText;
 
   @override
@@ -54,6 +56,7 @@ class _LoginInputState extends State<LoginInput> {
           alignment: Alignment.centerRight,
           children: [
             TextField(
+              controller: widget.controller,
               obscureText: _isObscureText,
               enableSuggestions: !_isObscureText,
               autocorrect: !_isObscureText,
@@ -63,10 +66,10 @@ class _LoginInputState extends State<LoginInput> {
                 hintText: widget.hint,
                 hintStyle: darkGreenInputStyle,
                 enabledBorder: const UnderlineInputBorder(
-                  borderSide: BorderSide(color: darkGreen50d, width: 1.5),
+                  borderSide: BorderSide(color: Colors.black12, width: 1),
                 ),
                 focusedBorder: const UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black38, width: 1.5),
+                  borderSide: BorderSide(color: Colors.black26, width: 1),
                 ),
                 // suffixIcon: Icon(Icons.visibility)
               ),

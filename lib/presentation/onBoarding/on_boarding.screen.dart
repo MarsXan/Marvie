@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marvie/core/components/buttons/custom_button.widget.dart';
-import 'package:marvie/core/components/buttons/custom_icon_button.widget.dart';
+import 'package:marvie/core/components/buttons/direction_buttons.widget.dart';
 import 'package:marvie/core/theme/colors.dart';
-import 'package:marvie/presentation/login/login.screen.dart';
+import 'package:marvie/presentation/authentication/sign_in.screen.dart';
 import 'package:marvie/presentation/onBoarding/on_boarding.card.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -30,6 +29,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
     super.dispose();
     _animationController.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -80,49 +80,38 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
               ),
               const Spacer(),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 8),
-                child: Row(
-                  children: [
-                    CustomIconButton(
-                      icon: 'asset/icons/previous_icon.svg',
-                      onPressed: () {
-                        if (_currentPage > 0){
-                          setState(() {
-                            _currentPage -=1;
-                          });
-                          _pageController.animateToPage(_currentPage,
-                              curve: Curves.easeInOut,
-                              duration: const Duration(milliseconds: 300));
-                        }
-                      },
-                    ),
-                    const SizedBox(
-                      width: 12,
-                    ),
-                    Expanded(
-                        child: CustomButton(
-                      title: _currentPage < onBoardingList.length - 1
-                          ? 'Next'
-                          : 'Start',
-                      gradient: greenGradient,
-                      onPressed: () {
-                        if (_currentPage < onBoardingList.length - 1) {
-                          setState(() {
-                            _currentPage += 1;
-                          });
-                          _pageController.animateToPage(_currentPage,
-                              curve: Curves.easeInOut,
-                              duration: const Duration(milliseconds: 300));
-                        } else {
-                          Get.to(() => const LoginScreen());
-                        }
-                      },
-                      icon:_currentPage < onBoardingList.length-1 ?  'asset/icons/next_icon.svg' : null,
-                    )),
-                  ],
-                ),
-              )
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 30, vertical: 8),
+                  child: DirectionButtons(
+                    nextBtnTitle: _currentPage < onBoardingList.length - 1
+                        ? 'Next'
+                        : 'Start',
+                    nextBtnIcon: _currentPage < onBoardingList.length - 1
+                        ? 'asset/icons/next_icon.svg'
+                        : null,
+                    onPreviousPress: () {
+                      if (_currentPage > 0) {
+                        setState(() {
+                          _currentPage -= 1;
+                        });
+                        _pageController.animateToPage(_currentPage,
+                            curve: Curves.easeInOut,
+                            duration: const Duration(milliseconds: 300));
+                      }
+                    },
+                    onNextPress: () {
+                      if (_currentPage < onBoardingList.length - 1) {
+                        setState(() {
+                          _currentPage += 1;
+                        });
+                        _pageController.animateToPage(_currentPage,
+                            curve: Curves.easeInOut,
+                            duration: const Duration(milliseconds: 300));
+                      } else {
+                        Get.offAll(() => const SignInScreen());
+                      }
+                    },
+                  ))
             ],
           ),
         ),

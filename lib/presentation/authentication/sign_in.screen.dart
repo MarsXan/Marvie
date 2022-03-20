@@ -1,12 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:marvie/core/components/buttons/custom_button.widget.dart';
 import 'package:marvie/core/theme/colors.dart';
 import 'package:marvie/core/theme/text_styles.dart';
+import 'package:marvie/presentation/authentication/sign_up_info1.screen.dart';
 
-import 'login_input.widget.dart';
+import 'authentication_header.widget.dart';
+import 'authentication_input.widget.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SignInScreen> createState() => _SignInScreenState();
+}
+
+class _SignInScreenState extends State<SignInScreen> {
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passController = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    _usernameController.dispose();
+    _passController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,56 +39,30 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    width: 45,
-                    height: 45,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: green300d,
-                        boxShadow: [
-                          BoxShadow(
-                              color: green300d.withOpacity(0.4),
-                              offset: Offset(0, 2),
-                              blurRadius: 2)
-                        ]),
-                  ),
-                  const SizedBox(
-                    height: 28,
-                  ),
-                  const Text(
-                    "Welcome!",
-                    style: extraLargeTitleStyle,
-                  ),
-                  const SizedBox(
-                    height: 9,
-                  ),
-                  Text(
-                    "Sign in to continue",
-                    style: whiteNormalMediumHeadingStyle.copyWith(
-                        color: darkGreen300d),
+                  const AuthenticationHeader(
+                    title: 'Welcome!',
+                    content: 'Sign in to continue',
                   ),
                   const SizedBox(
                     height: 37,
                   ),
-                  const LoginInput(
+                  AuthenticationInput(
                     iconColor: yellow300d,
                     hint: 'Username',
                     iconBackgroundColor: yellow50d,
                     icon: 'asset/icons/filled_user_icon.svg',
+                    controller: _usernameController,
                   ),
-                  // Padding(
-                  //   padding: const EdgeInsets.only(left: ),
-                  //   child: const Divider(thickness: 2.5,color: darkGreen50d,),
-                  // ),
                   const SizedBox(
                     height: 38,
                   ),
-                  const LoginInput(
+                  AuthenticationInput(
                     iconColor: red300d,
                     hint: 'Password',
                     iconBackgroundColor: red50d,
                     icon: 'asset/icons/lock_icon.svg',
                     isSecureText: true,
+                    controller: _passController,
                   ),
                   const SizedBox(
                     height: 64,
@@ -100,7 +92,9 @@ class LoginScreen extends StatelessWidget {
                     height: 48,
                   ),
                   CustomButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(() => const SignUpInfo1Screen());
+                    },
                     title: "Create an account",
                     titleColor: green300d,
                     backGroundColor: green50d,
