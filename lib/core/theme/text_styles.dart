@@ -37,7 +37,7 @@ const whiteCardTitle =  TextStyle(
     fontFamily: primaryFontFamily,
     decoration: TextDecoration.none);
 
-const darkGreenCardTitle =  TextStyle(
+const darkGreenCardTitle = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.bold,
     color: darkGreen300d,
@@ -45,7 +45,15 @@ const darkGreenCardTitle =  TextStyle(
     fontFamily: primaryFontFamily,
     decoration: TextDecoration.none);
 
-const whiteCardTitle2 =  TextStyle(
+const darkGreen50CardTitle = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.bold,
+    color: darkGreen50d,
+    fontStyle: FontStyle.normal,
+    fontFamily: primaryFontFamily,
+    decoration: TextDecoration.none);
+
+const whiteCardTitle2 = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.bold,
     color: Colors.white,
@@ -53,7 +61,7 @@ const whiteCardTitle2 =  TextStyle(
     fontFamily: primaryFontFamily,
     decoration: TextDecoration.none);
 
-const darkGreenCaptionStyle =  TextStyle(
+const darkGreenCaptionStyle = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w200,
     color: darkGreen300,
