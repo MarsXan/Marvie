@@ -42,7 +42,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
           child: Column(
             children: [
               SizedBox(
-                height: MediaQuery.of(context).size.width > 350 ? 535 : 450,
+                height: MediaQuery.of(context).size.width > 400 ? 535 : 450,
                 child: PageView.builder(
                     itemCount: onBoardingList.length,
                     controller: _pageController,

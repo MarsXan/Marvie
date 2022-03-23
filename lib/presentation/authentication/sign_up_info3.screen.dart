@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marvie/core/components/buttons/direction_buttons.widget.dart';
 import 'package:marvie/core/theme/colors.dart';
-import 'package:marvie/presentation/store/store.screen.dart';
+import 'package:marvie/presentation/store/store2.screen.dart';
 
 import 'authentication_header.widget.dart';
 import 'authentication_input.widget.dart';
@@ -29,7 +29,7 @@ class _SignUpInfo3ScreenState extends State<SignUpInfo3Screen> {
             child: Padding(
               padding: EdgeInsets.only(
                   left: 32,
-                  top: MediaQuery.of(context).size.width > 450 ? 90 : 60,
+                  top: MediaQuery.of(context).size.width > 400 ? 90 : 60,
                   right: 32),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,7 +64,7 @@ class _SignUpInfo3ScreenState extends State<SignUpInfo3Screen> {
                     height: 64,
                   ),
                   DirectionButtons(onNextPress: () {
-                    Get.to(() => const StoreScreen());
+                    Get.to(() => const StoreScreen2());
                   }, onPreviousPress: () {
                     Get.back();
                   }),

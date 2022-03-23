@@ -40,7 +40,7 @@ class _HiScreenState extends State<HiScreen> {
               end: Alignment.bottomRight,
               colors: [red300d, red400d]),
           borderRadius: BorderRadius.circular(
-              MediaQuery.of(context).size.width > 450 ? 45 : 20)),
+              MediaQuery.of(context).size.width > 400 ? 45 : 20)),
       child: SafeArea(
         child: Stack(
           children: [
@@ -60,7 +60,7 @@ class _HiScreenState extends State<HiScreen> {
               alignment: Alignment.topLeft,
               child: Container(
                 margin: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.width > 450 ? 180 : 80),
+                    top: MediaQuery.of(context).size.width > 400 ? 180 : 80),
                 width: 120,
                 height: 120,
                 decoration: const BoxDecoration(
@@ -83,7 +83,7 @@ class _HiScreenState extends State<HiScreen> {
             ),
             Padding(
               padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.width > 450 ? 190 : 80,
+                  top: MediaQuery.of(context).size.width > 400 ? 190 : 80,
                   left: 32,
                   right: 42),
               child: Column(
@@ -116,7 +116,7 @@ class _HiScreenState extends State<HiScreen> {
                   Image(
                     image: const AssetImage('asset/images/group_dogs.png'),
                     fit: BoxFit.contain,
-                    width: MediaQuery.of(context).size.width > 450 ? 160 : 120,
+                    width: MediaQuery.of(context).size.width > 400 ? 160 : 120,
                   )
                 ],
               ),

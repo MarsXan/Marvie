@@ -37,7 +37,7 @@ class _SignInScreenState extends State<SignInScreen> {
             child: Padding(
               padding: EdgeInsets.only(
                   left: 32,
-                  top: MediaQuery.of(context).size.width > 450 ? 90 : 60,
+                  top: MediaQuery.of(context).size.width > 400 ? 90 : 60,
                   right: 32),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,7 +47,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     content: 'Sign in to continue',
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.width > 450 ? 37 : 20,
+                    height: MediaQuery.of(context).size.width > 400 ? 37 : 20,
                   ),
                   AuthenticationInput(
                     iconColor: yellow300d,
@@ -68,7 +68,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     controller: _passController,
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.width > 450 ? 64 : 44,
+                    height: MediaQuery.of(context).size.width > 400 ? 64 : 44,
                   ),
                   CustomButton(
                     onPressed: () {},

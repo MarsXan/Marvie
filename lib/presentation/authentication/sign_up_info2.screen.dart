@@ -29,7 +29,7 @@ class _SignUpInfo2ScreenState extends State<SignUpInfo2Screen> {
             child: Padding(
               padding: EdgeInsets.only(
                   left: 32,
-                  top: MediaQuery.of(context).size.width > 450 ? 90 : 60,
+                  top: MediaQuery.of(context).size.width > 400 ? 90 : 60,
                   right: 32),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
