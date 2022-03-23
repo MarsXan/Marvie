@@ -98,7 +98,8 @@ class _ScreenWithMenuState extends State<ScreenWithMenu>
                           .animate(_animationController),
                       child: Stack(children: [
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(45),
+                          borderRadius:
+                              BorderRadius.circular(slide > 100 ? 45 : 0),
                           child: Container(
                             padding: const EdgeInsets.only(top: 60),
                             decoration: BoxDecoration(

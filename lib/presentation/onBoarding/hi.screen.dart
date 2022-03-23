@@ -33,14 +33,15 @@ class _HiScreenState extends State<HiScreen> {
   }
   @override
   Widget build(BuildContext context) {
+    print(MediaQuery.of(context).size);
     return Container(
-      decoration:  BoxDecoration(
+      decoration: BoxDecoration(
           gradient: const LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [red300d, red400d]),
-        borderRadius: BorderRadius.circular(45)
-      ),
+          borderRadius: BorderRadius.circular(
+              MediaQuery.of(context).size.width > 450 ? 45 : 20)),
       child: SafeArea(
         child: Stack(
           children: [
@@ -59,7 +60,8 @@ class _HiScreenState extends State<HiScreen> {
             Align(
               alignment: Alignment.topLeft,
               child: Container(
-                margin: const EdgeInsets.only(top: 180),
+                margin: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.width > 450 ? 180 : 80),
                 width: 120,
                 height: 120,
                 decoration: const BoxDecoration(
@@ -81,7 +83,10 @@ class _HiScreenState extends State<HiScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 190, left: 32,right: 42),
+              padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.width > 450 ? 190 : 80,
+                  left: 32,
+                  right: 42),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
@@ -109,7 +114,11 @@ class _HiScreenState extends State<HiScreen> {
                     ],
                   ),
                   const Spacer(),
-                  const Image(image: AssetImage('asset/images/group_dogs.png'),fit: BoxFit.contain,width:160 ,)
+                  Image(
+                    image: const AssetImage('asset/images/group_dogs.png'),
+                    fit: BoxFit.contain,
+                    width: MediaQuery.of(context).size.width > 450 ? 160 : 120,
+                  )
                 ],
               ),
             )

@@ -27,7 +27,10 @@ class _SignUpInfo3ScreenState extends State<SignUpInfo3Screen> {
         body: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.only(left: 32, top: 90, right: 32),
+              padding: EdgeInsets.only(
+                  left: 32,
+                  top: MediaQuery.of(context).size.width > 450 ? 90 : 60,
+                  right: 32),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

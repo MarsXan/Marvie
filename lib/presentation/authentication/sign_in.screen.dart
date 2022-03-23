@@ -35,7 +35,10 @@ class _SignInScreenState extends State<SignInScreen> {
         body: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.only(left: 32, top: 90, right: 32),
+              padding: EdgeInsets.only(
+                  left: 32,
+                  top: MediaQuery.of(context).size.width > 450 ? 90 : 60,
+                  right: 32),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -43,8 +46,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     title: 'Welcome!',
                     content: 'Sign in to continue',
                   ),
-                  const SizedBox(
-                    height: 37,
+                  SizedBox(
+                    height: MediaQuery.of(context).size.width > 450 ? 37 : 20,
                   ),
                   AuthenticationInput(
                     iconColor: yellow300d,
@@ -64,8 +67,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     isSecureText: true,
                     controller: _passController,
                   ),
-                  const SizedBox(
-                    height: 64,
+                  SizedBox(
+                    height: MediaQuery.of(context).size.width > 450 ? 64 : 44,
                   ),
                   CustomButton(
                     onPressed: () {},

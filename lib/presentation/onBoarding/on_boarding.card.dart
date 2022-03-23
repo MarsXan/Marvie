@@ -19,7 +19,7 @@ class OnBoardingCard extends StatelessWidget {
             child: Image(
               image: AssetImage(onBoardingModel.image),
               fit: BoxFit.contain,
-              height: 390,
+              height: MediaQuery.of(context).size.width > 450 ? 390 : 330,
             ),
           ),
           const SizedBox(height: 38),
