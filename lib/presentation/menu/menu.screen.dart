@@ -9,8 +9,11 @@ import 'package:marvie/presentation/menu/menu_item.dart';
 import 'package:marvie/presentation/menu/menu_type.dart';
 
 class MenuScreen extends StatelessWidget {
-  const MenuScreen({Key? key, required this.selectedItem}) : super(key: key);
+  const MenuScreen(
+      {Key? key, required this.selectedItem, required this.onchangeItem})
+      : super(key: key);
   final MenuType selectedItem;
+  final Function(MenuItem) onchangeItem;
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +75,7 @@ class MenuScreen extends StatelessWidget {
                         return MenuCard(
                           menuItem: item,
                           isSelected: item.type == selectedItem,
-                          onPress: (_) {},
+                          onPress: onchangeItem,
                         );
                       }),
                 ),

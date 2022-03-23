@@ -10,8 +10,15 @@ import 'package:marvie/presentation/menu/menu_type.dart';
 
 import 'store_vert.card.dart';
 
-class StoreScreen extends StatelessWidget {
+class StoreScreen extends StatefulWidget {
   const StoreScreen({Key? key}) : super(key: key);
+
+  @override
+  State<StoreScreen> createState() => _StoreScreenState();
+}
+
+class _StoreScreenState extends State<StoreScreen> {
+  CategoryItem selectedItem = categoryList[0];
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +39,14 @@ class StoreScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return CategoryCard(
                       item: categoryList[index],
-                      onPress: (catItem) {},
-                      backgroundColor: index == 0 ? green300 : darkGreen50d,
+                      onPress: (catItem) {
+                        setState(() {
+                          selectedItem = catItem;
+                        });
+                      },
+                      backgroundColor: selectedItem == categoryList[index]
+                          ? green300
+                          : darkGreen50d,
                       width: index == 0 ? 52 : null,
                       padding: index == 0 ? 12 : 24,
                     );

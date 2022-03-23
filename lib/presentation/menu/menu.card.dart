@@ -14,7 +14,7 @@ class MenuCard extends StatelessWidget {
       : super(key: key);
 
   final MenuItem menuItem;
-  final Function(int) onPress;
+  final Function(MenuItem) onPress;
   final bool isSelected;
 
   @override
@@ -27,7 +27,9 @@ class MenuCard extends StatelessWidget {
           padding: const EdgeInsets.all(0),
           backgroundColor: Colors.transparent,
         ),
-        onPressed: () {},
+        onPressed: () {
+          onPress(menuItem);
+        },
         child: Padding(
           padding: const EdgeInsets.only(left: 9),
           child: Row(

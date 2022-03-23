@@ -33,7 +33,9 @@ class CategoryCard extends StatelessWidget {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           backgroundColor: backgroundColor,
         ),
-        onPressed: () {},
+        onPressed: () {
+          onPress(item);
+        },
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: padding),
           width: width,

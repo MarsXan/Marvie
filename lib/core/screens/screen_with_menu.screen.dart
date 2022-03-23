@@ -31,6 +31,7 @@ class _ScreenWithMenuState extends State<ScreenWithMenu>
   late var maxSlide = (MediaQuery.of(context).size.width - 60);
   final minDragstartEdge = 60;
   late var maxDragstartEdge = maxSlide - 16;
+  late MenuType selectedMenuType = widget.selectedMenu;
 
   @override
   void dispose() {
@@ -60,7 +61,12 @@ class _ScreenWithMenuState extends State<ScreenWithMenu>
           return Stack(
             children: [
               MenuScreen(
-                selectedItem: widget.selectedMenu,
+                selectedItem: selectedMenuType,
+                onchangeItem: (item) {
+                  setState(() {
+                    selectedMenuType = item.type;
+                  });
+                },
               ),
               Transform(
                   transform: Matrix4.identity()

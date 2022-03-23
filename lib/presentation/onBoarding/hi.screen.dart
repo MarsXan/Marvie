@@ -33,7 +33,6 @@ class _HiScreenState extends State<HiScreen> {
   }
   @override
   Widget build(BuildContext context) {
-    print(MediaQuery.of(context).size);
     return Container(
       decoration: BoxDecoration(
           gradient: const LinearGradient(
