@@ -3,14 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:marvie/core/theme/colors.dart';
 import 'package:marvie/core/theme/text_styles.dart';
+import 'package:marvie/presentation/menu/menu_item.dart';
 
 class MenuCard extends StatelessWidget {
-  const MenuCard({Key? key, required this.title, required this.icon, required this.onPress})
+  const MenuCard(
+      {Key? key,
+      required this.menuItem,
+      required this.onPress,
+      this.isSelected = false})
       : super(key: key);
 
-  final String title;
-  final String icon;
+  final MenuItem menuItem;
   final Function(int) onPress;
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -30,16 +35,17 @@ class MenuCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SvgPicture.asset(
-                'asset/icons/$icon',
-                color: darkGreen300d,
+                'asset/icons/${menuItem.icon}',
+                color: isSelected ? green300d : darkGreen300d,
                 width: 22,
               ),
               const SizedBox(
                 width: 12,
               ),
               Text(
-                title,
-                style: darkGreenCardTitle,
+                menuItem.title,
+                style: darkGreenCardTitle.copyWith(
+                    color: isSelected ? green300d : darkGreen300d),
               )
             ],
           ),

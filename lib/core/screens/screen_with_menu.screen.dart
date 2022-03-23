@@ -3,10 +3,20 @@ import 'package:marvie/core/components/appbar.widget.dart';
 import 'package:marvie/core/screens/empty.screen.dart';
 import 'package:marvie/core/theme/colors.dart';
 import 'package:marvie/presentation/menu/menu.screen.dart';
+import 'package:marvie/presentation/menu/menu_type.dart';
 
 class ScreenWithMenu extends StatefulWidget {
-  const ScreenWithMenu({Key? key, required this.body}) : super(key: key);
+  const ScreenWithMenu(
+      {Key? key,
+      required this.body,
+      this.gradient,
+      this.backgroundColor,
+      required this.selectedMenu})
+      : super(key: key);
   final Widget body;
+  final Gradient? gradient;
+  final Color? backgroundColor;
+  final MenuType selectedMenu;
 
   @override
   State<ScreenWithMenu> createState() => _ScreenWithMenuState();
@@ -38,21 +48,20 @@ class _ScreenWithMenuState extends State<ScreenWithMenu>
       child: AnimatedBuilder(
         animation: _animationController,
         builder: (context, _) {
-          double slide = maxSlide *
-              _animationController.value;
+          double slide = maxSlide * _animationController.value;
           double scale = 1 - (_animationController.value * 0.1);
 
-          double slide2 = (maxSlide -30) *
-              _animationController.value;
+          double slide2 = (maxSlide - 30) * _animationController.value;
           double scale2 = 1 - (_animationController.value * 0.15);
 
-          double slide3 = (maxSlide-45) *
-              _animationController.value;
+          double slide3 = (maxSlide - 45) * _animationController.value;
           double scale3 = 1 - (_animationController.value * 0.18);
 
           return Stack(
             children: [
-              const MenuScreen(),
+              MenuScreen(
+                selectedItem: widget.selectedMenu,
+              ),
               Transform(
                   transform: Matrix4.identity()
                     ..translate(slide3)
@@ -88,9 +97,16 @@ class _ScreenWithMenuState extends State<ScreenWithMenu>
                       turns: Tween(begin: 0.0, end: -0.025)
                           .animate(_animationController),
                       child: Stack(children: [
-                        ClipRRect(
-                            borderRadius: BorderRadius.circular(45),
-                            child: widget.body),
+                        Container(
+                          padding: const EdgeInsets.only(top: 60),
+                          decoration: BoxDecoration(
+                            gradient: widget.gradient,
+                            color: widget.backgroundColor,
+                          ),
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.circular(45),
+                              child: widget.body),
+                        ),
                         SafeArea(
                           child: CustomAppBar(
                             onPress: () {

@@ -5,33 +5,20 @@ import 'package:marvie/core/theme/colors.dart';
 import 'package:marvie/core/theme/dimentions.dart';
 import 'package:marvie/core/theme/text_styles.dart';
 import 'package:marvie/presentation/menu/menu.card.dart';
+import 'package:marvie/presentation/menu/menu_item.dart';
+import 'package:marvie/presentation/menu/menu_type.dart';
 
 class MenuScreen extends StatelessWidget {
-  const MenuScreen({Key? key}) : super(key: key);
+  const MenuScreen({Key? key, required this.selectedItem}) : super(key: key);
+  final MenuType selectedItem;
 
   @override
   Widget build(BuildContext context) {
-    const _menuTitles = [
-      "Shop",
-      "Payment",
-      "Chat",
-      "Notifications",
-      "Settings",
-      "Rate Us"
-    ];
-    const _menuIcons = [
-      "Bag_Icon.svg",
-      "Card_Icon.svg",
-      "Chat_Icon.svg",
-      "NavigationBellOff.svg",
-      "Settings_Icon.svg",
-      "NavigationStarOff.svg"
-    ];
     return Container(
       decoration: const BoxDecoration(gradient: darkGreenGradient),
       child: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(left: 21,top: 48),
+          padding: const EdgeInsets.only(left: 21, top: 48),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -62,12 +49,12 @@ class MenuScreen extends StatelessWidget {
               const SizedBox(
                 height: 24,
               ),
-               Padding(
+              Padding(
                 padding: const EdgeInsets.only(left: 9),
                 child: Row(
                   children: const [
                     Text(
-                      "Shelly",
+                      "Mohsen",
                       style: whiteMediumBoldHeadingStyle,
                     ),
                   ],
@@ -81,15 +68,15 @@ class MenuScreen extends StatelessWidget {
                       itemCount: 6,
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
+                        var item = MenuItem.getMenuList()[index];
                         return MenuCard(
-                          title: _menuTitles[index],
-                          icon: _menuIcons[index],
+                          menuItem: item,
+                          isSelected: item.type == selectedItem,
                           onPress: (_) {},
                         );
                       }),
                 ),
               ),
-
             ],
           ),
         ),
