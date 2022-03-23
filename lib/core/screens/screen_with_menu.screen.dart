@@ -97,15 +97,16 @@ class _ScreenWithMenuState extends State<ScreenWithMenu>
                       turns: Tween(begin: 0.0, end: -0.025)
                           .animate(_animationController),
                       child: Stack(children: [
-                        Container(
-                          padding: const EdgeInsets.only(top: 60),
-                          decoration: BoxDecoration(
-                            gradient: widget.gradient,
-                            color: widget.backgroundColor,
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(45),
+                          child: Container(
+                            padding: const EdgeInsets.only(top: 60),
+                            decoration: BoxDecoration(
+                              gradient: widget.gradient,
+                              color: widget.backgroundColor,
+                            ),
+                            child: widget.body,
                           ),
-                          child: ClipRRect(
-                              borderRadius: BorderRadius.circular(45),
-                              child: widget.body),
                         ),
                         SafeArea(
                           child: CustomAppBar(
