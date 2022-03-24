@@ -19,6 +19,7 @@ class StoreScreen extends StatefulWidget {
 
 class _StoreScreenState extends State<StoreScreen> {
   CategoryItem selectedItem = categoryList[0];
+  var list = Product.productList();
 
   @override
   Widget build(BuildContext context) {
@@ -65,10 +66,18 @@ class _StoreScreenState extends State<StoreScreen> {
                           runSpacing: 10,
                           spacing: 15,
                           alignment: WrapAlignment.center,
-                          children: List.generate(Product.productList().length,
-                              (index) {
+                          children: List.generate(list.length, (index) {
                             return StoreVertCard(
-                                product: Product.productList()[index]);
+                              product: list[index],
+                              onLikeTap: (product) {
+                                setState(() {
+                                  var p = list.firstWhere(
+                                      (element) => element.id == product.id);
+
+                                  p.isFavorite = !p.isFavorite;
+                                });
+                              },
+                            );
                           }),
                         ),
                       ],

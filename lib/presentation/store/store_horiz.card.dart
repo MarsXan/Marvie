@@ -6,8 +6,11 @@ import 'package:marvie/core/theme/dimentions.dart';
 import 'package:marvie/core/theme/text_styles.dart';
 
 class StoreHorizCard extends StatelessWidget {
-  const StoreHorizCard({Key? key, required this.product}) : super(key: key);
+  const StoreHorizCard(
+      {Key? key, required this.product, required this.onLikeTap})
+      : super(key: key);
   final Product product;
+  final Function(Product) onLikeTap;
 
   @override
   Widget build(BuildContext context) {
@@ -42,28 +45,33 @@ class StoreHorizCard extends StatelessWidget {
                 const SizedBox(
                   height: 39,
                 ),
-                Container(
-                  width: 36,
-                  height: 36,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
-                            offset: const Offset(0, 2),
-                            blurRadius: 2)
-                      ]),
+                GestureDetector(
+                  onTap: () {
+                    onLikeTap(product);
+                  },
                   child: Container(
-                      width: double.infinity,
-                      alignment: Alignment.center,
-                      child: SvgPicture.asset(
-                        'asset/icons/NavigationHeartOff.svg',
-                        fit: BoxFit.contain,
-                        width: 12,
-                        height: 12,
-                        color: product.isFavorite ? red300 : null,
-                      )),
+                    width: 36,
+                    height: 36,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.1),
+                              offset: const Offset(0, 2),
+                              blurRadius: 2)
+                        ]),
+                    child: Container(
+                        width: double.infinity,
+                        alignment: Alignment.center,
+                        child: SvgPicture.asset(
+                          'asset/icons/NavigationHeartOff.svg',
+                          fit: BoxFit.contain,
+                          width: 12,
+                          height: 12,
+                          color: product.isFavorite ? red300 : null,
+                        )),
+                  ),
                 ),
               ],
             ),

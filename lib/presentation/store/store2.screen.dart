@@ -21,6 +21,7 @@ class StoreScreen2 extends StatefulWidget {
 
 class _StoreScreen2State extends State<StoreScreen2> {
   CategoryItem selectedItem = categoryList[0];
+  var list = Product.productList(isFirstItemLarge: true);
 
   @override
   Widget build(BuildContext context) {
@@ -65,13 +66,31 @@ class _StoreScreen2State extends State<StoreScreen2> {
                           runSpacing: 19,
                           spacing: 15,
                           alignment: WrapAlignment.center,
-                          children: List.generate(Product.productList().length,
-                              (index) {
-                            var p = Product.productList(
-                                isFirstItemLarge: true)[index];
+                          children: List.generate(list.length, (index) {
+                            var p = list[index];
                             return p.type == ProductType.large
-                                ? StoreHorizCard(product: p)
-                                : StoreVertCard(product: p);
+                                ? StoreHorizCard(
+                                    product: p,
+                                    onLikeTap: (product) {
+                                      setState(() {
+                                        var p = list.firstWhere((element) =>
+                                            element.id == product.id);
+
+                                        p.isFavorite = !p.isFavorite;
+                                      });
+                                    },
+                                  )
+                                : StoreVertCard(
+                                    product: p,
+                                    onLikeTap: (product) {
+                                      setState(() {
+                                        var p = list.firstWhere((element) =>
+                                            element.id == product.id);
+
+                                        p.isFavorite = !p.isFavorite;
+                                      });
+                                    },
+                                  );
                           }),
                         ),
                       ],
