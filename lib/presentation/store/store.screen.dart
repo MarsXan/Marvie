@@ -30,32 +30,43 @@ class _StoreScreenState extends State<StoreScreen> {
         alignment: Alignment.bottomCenter,
         children: [
           SafeArea(
-            child: Stack(alignment: Alignment.topCenter, children: [
-              Container(
-                height: 52,
-                padding: const EdgeInsets.only(left: 15),
-                child: ListView.builder(
-                  itemCount: categoryList.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return CategoryCard(
-                      item: categoryList[index],
-                      onPress: (catItem) {
-                        setState(() {
-                          selectedItem = catItem;
-                        });
-                      },
-                      backgroundColor: selectedItem == categoryList[index]
-                          ? green300
-                          : darkGreen50d,
-                      width: index == 0 ? 52 : null,
-                      padding: index == 0 ? 12 : 24,
-                    );
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 60.0, bottom: 70),
+            child: NestedScrollView(
+              headerSliverBuilder:
+                  (BuildContext context, bool innerBoxIsScrolled) {
+                return <Widget>[
+                  SliverAppBar(
+                    automaticallyImplyLeading: false,
+                    expandedHeight: 55.0,
+                    pinned: false,
+                    backgroundColor: Colors.transparent,
+                    flexibleSpace: Container(
+                      height: 52,
+                      padding: const EdgeInsets.only(left: 15),
+                      child: ListView.builder(
+                        itemCount: categoryList.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return CategoryCard(
+                            item: categoryList[index],
+                            onPress: (catItem) {
+                              setState(() {
+                                selectedItem = catItem;
+                              });
+                            },
+                            backgroundColor: selectedItem == categoryList[index]
+                                ? green300
+                                : darkGreen50d,
+                            width: index == 0 ? 52 : null,
+                            padding: index == 0 ? 12 : 24,
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ];
+              },
+              body: Padding(
+                padding: const EdgeInsets.only(bottom: 70),
                 child: SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.only(top: 24.0),
@@ -85,7 +96,7 @@ class _StoreScreenState extends State<StoreScreen> {
                   ),
                 ),
               ),
-            ]),
+            ),
           ),
           CustomBottomNavigation(
             itemList: [

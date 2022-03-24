@@ -32,30 +32,44 @@ class _StoreScreen2State extends State<StoreScreen2> {
         alignment: Alignment.bottomCenter,
         children: [
           SafeArea(
-            child: Stack(alignment: Alignment.topCenter, children: [
-              Container(
-                height: 150,
-                padding: const EdgeInsets.only(left: 15),
-                child: ListView.builder(
-                  itemCount: categoryList2.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return CategoryVertCard(
-                      item: categoryList2[index],
-                      onPress: (catItem) {
-                        setState(() {
-                          selectedItem = catItem;
-                        });
-                      },
-                      backgroundColor: selectedItem == categoryList2[index]
-                          ? red400d
-                          : darkGreen50d,
-                    );
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 150.0, bottom: 70),
+            child: NestedScrollView(
+              headerSliverBuilder:
+                  (BuildContext context, bool innerBoxIsScrolled) {
+                return <Widget>[
+                  SliverAppBar(
+                    automaticallyImplyLeading: false,
+                    expandedHeight: 155.0,
+                    pinned: false,
+                    backgroundColor: Colors.transparent,
+                    flexibleSpace: SingleChildScrollView(
+                      child: Container(
+                        height: 150,
+                        padding: const EdgeInsets.only(left: 15),
+                        child: ListView.builder(
+                          itemCount: categoryList2.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return CategoryVertCard(
+                              item: categoryList2[index],
+                              onPress: (catItem) {
+                                setState(() {
+                                  selectedItem = catItem;
+                                });
+                              },
+                              backgroundColor:
+                                  selectedItem == categoryList2[index]
+                                      ? red400d
+                                      : darkGreen50d,
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ];
+              },
+              body: Padding(
+                padding: const EdgeInsets.only(bottom: 70),
                 child: SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.only(top: 24.0),
@@ -98,7 +112,7 @@ class _StoreScreen2State extends State<StoreScreen2> {
                   ),
                 ),
               ),
-            ]),
+            ),
           ),
           CustomBottomNavigation(
             itemList: [
