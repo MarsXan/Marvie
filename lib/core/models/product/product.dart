@@ -21,7 +21,8 @@ class Product {
       this.productSize = ProductSize.m,
       this.count = 1});
 
-  static List<Product> productList({bool isFirstItemLarge = false}) {
+  static List<Product> productList(
+      {bool isFirstItemLarge = false, bool areFavoriteProducts = false}) {
     return [
       Product(
           id: 0,
@@ -30,50 +31,50 @@ class Product {
               ? 'asset/images/product5_image.png'
               : 'asset/images/product1_image.png',
           price: 120,
-          isFavorite: false,
+          isFavorite: areFavoriteProducts,
           type: isFirstItemLarge ? ProductType.large : ProductType.medium),
       Product(
           id: 1,
           title: "Belt suit blazer",
           image: 'asset/images/product2_image.png',
           price: 200,
-          isFavorite: false),
+          isFavorite: areFavoriteProducts),
       Product(
           id: 2,
           title: "Belt suit blazer",
           image: 'asset/images/product3_image.png',
           price: 110,
-          isFavorite: false),
+          isFavorite: areFavoriteProducts),
       Product(
           id: 3,
           title: "Belt suit blazer",
           image: 'asset/images/product4_image.png',
           price: 170,
-          isFavorite: false),
+          isFavorite: areFavoriteProducts),
       Product(
           id: 4,
           title: "Belt suit blazer",
           image: 'asset/images/product1_image.png',
           price: 120,
-          isFavorite: false),
+          isFavorite: areFavoriteProducts),
       Product(
           id: 5,
           title: "Belt suit blazer",
           image: 'asset/images/product2_image.png',
           price: 200,
-          isFavorite: false),
+          isFavorite: areFavoriteProducts),
       Product(
           id: 6,
           title: "Belt suit blazer",
           image: 'asset/images/product3_image.png',
           price: 110,
-          isFavorite: false),
+          isFavorite: areFavoriteProducts),
       Product(
           id: 7,
           title: "Belt suit blazer",
           image: 'asset/images/product4_image.png',
           price: 170,
-          isFavorite: false),
+          isFavorite: areFavoriteProducts),
     ];
   }
 }

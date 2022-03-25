@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marvie/core/components/buttons/direction_buttons.widget.dart';
 import 'package:marvie/core/theme/colors.dart';
-import 'package:marvie/presentation/store/store2.screen.dart';
+import 'package:marvie/presentation/store/store_home.screen.dart';
 
 import 'authentication_header.widget.dart';
 import 'authentication_input.widget.dart';
@@ -64,7 +64,7 @@ class _SignUpInfo3ScreenState extends State<SignUpInfo3Screen> {
                     height: 64,
                   ),
                   DirectionButtons(onNextPress: () {
-                    Get.to(() => const StoreScreen2());
+                    Get.to(() => const StoreHome());
                   }, onPreviousPress: () {
                     Get.back();
                   }),

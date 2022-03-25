@@ -5,6 +5,7 @@ import 'package:marvie/core/screens/screen_with_menu.screen.dart';
 import 'package:marvie/core/theme/colors.dart';
 import 'package:marvie/presentation/menu/menu_type.dart';
 import 'package:marvie/presentation/store/store2.screen.dart';
+import 'package:marvie/presentation/store/store_favorite_list.screen.dart';
 
 import 'store.screen.dart';
 
@@ -37,12 +38,12 @@ class _StoreHomeState extends State<StoreHome> with TickerProviderStateMixin {
         children: [
           TabBarView(
             controller: _controller,
-            children: [
+            children: const [
+              StoreFavoriteList(),
               StoreScreen(),
               StoreScreen2(),
               StoreScreen(),
               StoreScreen2(),
-              StoreScreen(),
             ],
           ),
           CustomBottomNavigation(

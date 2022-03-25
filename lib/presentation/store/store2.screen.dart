@@ -16,7 +16,7 @@ class StoreScreen2 extends StatefulWidget {
 }
 
 class _StoreScreen2State extends State<StoreScreen2> {
-  CategoryItem selectedItem = categoryList[0];
+  CategoryItem selectedItem = categoryList2[0];
   var list = Product.productList(isFirstItemLarge: true);
 
   @override
