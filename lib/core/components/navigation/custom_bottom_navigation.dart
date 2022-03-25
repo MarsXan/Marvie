@@ -13,7 +13,8 @@ class CustomBottomNavigation extends StatefulWidget {
       this.selectedItem = 1,
       this.selectedItemBackGround = green300,
       this.backGroundColor = darkGreen50d,
-      this.animDuration = 300})
+      this.animDuration = 300,
+      this.controller})
       : super(key: key);
   final List<NavItem> itemList;
   final Function(int index) onItemChange;
@@ -21,6 +22,7 @@ class CustomBottomNavigation extends StatefulWidget {
   final Color selectedItemBackGround;
   final Color backGroundColor;
   final int animDuration;
+  final TabController? controller;
 
   @override
   State<CustomBottomNavigation> createState() => _CustomBottomNavigationState();
@@ -131,6 +133,7 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation>
                 _selectedItem = index;
                 _initAnimationAndStart(
                     _positionAnimation.value, _calcAnimValue(index));
+                widget.controller?.animateTo(index);
               },
               child: Container(
                   width: 60,
