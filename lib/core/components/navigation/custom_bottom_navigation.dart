@@ -14,7 +14,7 @@ class CustomBottomNavigation extends StatefulWidget {
       this.selectedItemBackGround = green300,
       this.backGroundColor = darkGreen50d,
       this.animDuration = 200,
-      this.controller})
+      this.tabController})
       : super(key: key);
   final List<NavItem> itemList;
   final Function(int index) onItemChange;
@@ -22,7 +22,7 @@ class CustomBottomNavigation extends StatefulWidget {
   final Color selectedItemBackGround;
   final Color backGroundColor;
   final int animDuration;
-  final TabController? controller;
+  final TabController? tabController;
 
   @override
   State<CustomBottomNavigation> createState() => _CustomBottomNavigationState();
@@ -58,13 +58,11 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation>
         });
       });
 
-    widget.controller?.addListener(() {
+    widget.tabController?.addListener(() {
       _initAnimationAndStart(_positionAnimation.value,
-          _calcAnimValue(widget.controller?.index ?? _selectedItem));
-      widget.onItemChange(widget.controller?.index ?? _selectedItem);
-      setState(() {
-        _selectedItem = widget.controller?.index ?? _selectedItem;
-      });
+          _calcAnimValue(widget.tabController?.index ?? _selectedItem));
+      widget.onItemChange(widget.tabController?.index ?? _selectedItem);
+      _selectedItem = widget.tabController?.index ?? _selectedItem;
     });
   }
 
@@ -143,7 +141,7 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation>
                 _selectedItem = index;
                 _initAnimationAndStart(
                     _positionAnimation.value, _calcAnimValue(index));
-                widget.controller?.animateTo(index,
+                widget.tabController?.animateTo(index,
                     duration: const Duration(milliseconds: 100));
               },
               child: Container(
