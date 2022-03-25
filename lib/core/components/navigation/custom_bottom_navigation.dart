@@ -10,10 +10,10 @@ class CustomBottomNavigation extends StatefulWidget {
       {Key? key,
       required this.itemList,
       required this.onItemChange,
-      this.selectedItem = 1,
+      this.selectedItem = 2,
       this.selectedItemBackGround = green300,
       this.backGroundColor = darkGreen50d,
-      this.animDuration = 300,
+      this.animDuration = 200,
       this.controller})
       : super(key: key);
   final List<NavItem> itemList;
@@ -57,6 +57,15 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation>
           fabIconAlpha = _fadeOutController.value;
         });
       });
+
+    widget.controller?.addListener(() {
+      _initAnimationAndStart(_positionAnimation.value,
+          _calcAnimValue(widget.controller?.index ?? _selectedItem));
+      widget.onItemChange(widget.controller?.index ?? _selectedItem);
+      setState(() {
+        _selectedItem = widget.controller?.index ?? _selectedItem;
+      });
+    });
   }
 
   @override
@@ -72,7 +81,8 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation>
       decoration: BoxDecoration(
           color: widget.backGroundColor,
           borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(cardBorderRadius), topRight: Radius.circular(cardBorderRadius))),
+              topLeft: Radius.circular(cardBorderRadius),
+              topRight: Radius.circular(cardBorderRadius))),
       height: 96,
       child: Stack(
         alignment: Alignment.center,
@@ -133,7 +143,8 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation>
                 _selectedItem = index;
                 _initAnimationAndStart(
                     _positionAnimation.value, _calcAnimValue(index));
-                widget.controller?.animateTo(index);
+                widget.controller?.animateTo(index,
+                    duration: const Duration(milliseconds: 100));
               },
               child: Container(
                   width: 60,
