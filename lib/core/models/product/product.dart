@@ -1,4 +1,5 @@
-import 'package:marvie/core/models/product_type.dart';
+import 'package:marvie/core/models/product/product_size.dart';
+import 'package:marvie/core/models/product/product_type.dart';
 
 class Product {
   int id;
@@ -7,6 +8,8 @@ class Product {
   int price;
   bool isFavorite;
   ProductType type;
+  ProductSize productSize;
+  int count;
 
   Product(
       {required this.id,
@@ -14,7 +17,9 @@ class Product {
       required this.image,
       required this.price,
       required this.isFavorite,
-      this.type = ProductType.medium});
+      this.type = ProductType.medium,
+      this.productSize = ProductSize.m,
+      this.count = 1});
 
   static List<Product> productList({bool isFirstItemLarge = false}) {
     return [

@@ -3,8 +3,8 @@ import 'package:marvie/core/components/categories/category.model.dart';
 import 'package:marvie/core/components/categories/category_vert.card.dart';
 import 'package:marvie/core/components/navigation/custom_bottom_navigation.dart';
 import 'package:marvie/core/components/navigation/nav_item.dart';
-import 'package:marvie/core/models/product.dart';
-import 'package:marvie/core/models/product_type.dart';
+import 'package:marvie/core/models/product/product.dart';
+import 'package:marvie/core/models/product/product_type.dart';
 import 'package:marvie/core/screens/screen_with_menu.screen.dart';
 import 'package:marvie/core/theme/colors.dart';
 import 'package:marvie/presentation/menu/menu_type.dart';
@@ -35,7 +35,7 @@ class _StoreScreen2State extends State<StoreScreen2> {
             child: NestedScrollView(
               headerSliverBuilder:
                   (BuildContext context, bool innerBoxIsScrolled) {
-                return <Widget>[
+                    return [
                   SliverAppBar(
                     automaticallyImplyLeading: false,
                     expandedHeight: 155.0,

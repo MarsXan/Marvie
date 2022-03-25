@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:marvie/core/models/product.dart';
+import 'package:marvie/core/models/product/product.dart';
 import 'package:marvie/core/theme/colors.dart';
 import 'package:marvie/core/theme/dimentions.dart';
 import 'package:marvie/core/theme/text_styles.dart';

@@ -69,14 +69,29 @@ const darkGreenCaptionStyle = TextStyle(
     fontFamily: primaryFontFamily,
     decoration: TextDecoration.none);
 
-const darkGreenCaptionStyleD =  TextStyle(
+const greenCaptionStyle = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    color: green300d,
+    fontStyle: FontStyle.normal,
+    fontFamily: primaryFontFamily,
+    decoration: TextDecoration.none);
+
+const whiteCaptionStyle = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    color: Colors.white,
+    fontStyle: FontStyle.normal,
+    fontFamily: primaryFontFamily,
+    decoration: TextDecoration.none);
+
+const darkGreenCaptionStyleD = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w200,
     color: darkGreen300d,
     fontStyle: FontStyle.normal,
     fontFamily: primaryFontFamily,
     decoration: TextDecoration.none);
-
 
 const darkGreenBodyStyle =  TextStyle(
     fontSize: 14,
