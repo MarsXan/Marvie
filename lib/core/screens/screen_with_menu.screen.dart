@@ -11,12 +11,14 @@ class ScreenWithMenu extends StatefulWidget {
       required this.body,
       this.gradient,
       this.backgroundColor,
-      required this.selectedMenu})
+      required this.selectedMenu,
+      this.rightMenuItem})
       : super(key: key);
   final Widget body;
   final Gradient? gradient;
   final Color? backgroundColor;
   final MenuType selectedMenu;
+  final Widget? rightMenuItem;
 
   @override
   State<ScreenWithMenu> createState() => _ScreenWithMenuState();
@@ -117,9 +119,15 @@ class _ScreenWithMenuState extends State<ScreenWithMenu>
                         ),
                         SafeArea(
                           child: CustomAppBar(
-                            onPress: () {
-                              toggle();
-                            },
+                            leftView: IconButton(
+                                onPressed: () {
+                                  toggle();
+                                },
+                                icon: const Icon(
+                                  Icons.menu_rounded,
+                                  color: Colors.white,
+                                )),
+                            rightView: widget.rightMenuItem,
                           ),
                         )
                       ]))),

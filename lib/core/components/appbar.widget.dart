@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({Key? key, this.onPress}) : super(key: key);
-  final Function? onPress;
+  const CustomAppBar({
+    Key? key,
+    this.leftView,
+    this.rightView,
+  }) : super(key: key);
+  final Widget? leftView;
+  final Widget? rightView;
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        IconButton(
-            onPressed: () {
-              if (onPress != null){
-              onPress!();
-              }
-
-            },
-            icon: const Icon(
-              Icons.menu_rounded,
-              color: Colors.white,
-            ))
+        if (leftView != null) leftView!,
+        if (rightView != null) rightView!,
       ],
     );
   }

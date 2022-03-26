@@ -6,18 +6,17 @@ import 'package:marvie/core/theme/dimentions.dart';
 import 'nav_item.dart';
 
 class CustomBottomNavigation extends StatefulWidget {
-  const CustomBottomNavigation(
-      {Key? key,
-      required this.itemList,
-      required this.onItemChange,
-      this.selectedItem = 2,
-      this.selectedItemBackGround = green300,
-      this.backGroundColor = darkGreen50d,
-      this.animDuration = 200,
-      this.tabController})
+  const CustomBottomNavigation({Key? key,
+    required this.itemList,
+    this.onItemChange,
+    this.selectedItem = 1,
+    this.selectedItemBackGround = green300,
+    this.backGroundColor = darkGreen50d,
+    this.animDuration = 200,
+    this.tabController})
       : super(key: key);
   final List<NavItem> itemList;
-  final Function(int index) onItemChange;
+  final Function(int index)? onItemChange;
   final int selectedItem;
   final Color selectedItemBackGround;
   final Color backGroundColor;
@@ -61,7 +60,9 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation>
     widget.tabController?.addListener(() {
       _initAnimationAndStart(_positionAnimation.value,
           _calcAnimValue(widget.tabController?.index ?? _selectedItem));
-      widget.onItemChange(widget.tabController?.index ?? _selectedItem);
+      if (widget.onItemChange != null) {
+        widget.onItemChange!(widget.tabController?.index ?? _selectedItem);
+      }
       _selectedItem = widget.tabController?.index ?? _selectedItem;
     });
   }
@@ -137,7 +138,9 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation>
         .map((e) => GestureDetector(
               onTap: () {
                 var index = widget.itemList.indexOf(e);
-                widget.onItemChange(index);
+                if (widget.onItemChange != null) {
+                  widget.onItemChange!(index);
+                }
                 _selectedItem = index;
                 _initAnimationAndStart(
                     _positionAnimation.value, _calcAnimValue(index));

@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:marvie/core/components/buttons/custom_button.widget.dart';
 import 'package:marvie/core/models/product/product.dart';
-import 'package:marvie/core/screens/screen_with_menu.screen.dart';
 import 'package:marvie/core/theme/colors.dart';
 import 'package:marvie/core/theme/dimentions.dart';
 import 'package:marvie/core/theme/text_styles.dart';
-import 'package:marvie/presentation/menu/menu_type.dart';
 import 'package:marvie/presentation/store/cart.card.dart';
 
 class CartScreen extends StatefulWidget {
@@ -19,10 +17,9 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
-    return ScreenWithMenu(
-      selectedMenu: MenuType.shop,
-      gradient: darkOrangeGradient,
-      body: Stack(
+    return Container(
+      decoration: const BoxDecoration(gradient: darkOrangeGradient),
+      child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
           Padding(
